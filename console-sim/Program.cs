@@ -1,4 +1,5 @@
-﻿using System;
+﻿using console_sim_data.Models;
+using System;
 
 namespace console_sim
 {
@@ -6,7 +7,18 @@ namespace console_sim
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            using (var context = new ConsoleSimContext())
+            {
+                var person = new Person
+                {
+                    PersonId = 2,
+                    Name = "Slam",
+                    Age = 30
+                   
+                };
+                context.Add(person);
+                context.SaveChanges();
+            }
         }
     }
 }
